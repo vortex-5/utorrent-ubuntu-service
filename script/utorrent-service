@@ -1,0 +1,18 @@
+#!/bin/sh
+#Starts the uTorrent as a service to be executed from upstart or systemd
+
+# Location of the log file (must be by the current user writable)
+LOGFILE=/var/log/utorrent.log
+
+# Path to the utorrent server (usually sym linked)
+UTORRENT_PATH=/path/to/utorrent-server_alpha_v3_0
+
+# Name of the utorrent server binary (you usually don't need to change this)
+EXEC=utserver
+
+# Pre-start cleanup of last run
+if [ -e $LOGFILE ]; then
+	rm $LOGFILE
+fi
+
+$UTORRENT_PATH/$EXEC -settingspath $UTORRENT_PATH -logfile $LOGFILE

@@ -1,0 +1,11 @@
+[Unit]
+Description=utorrent service
+
+[Service]
+Type=simple
+User=##### THE USER YOU WANT THE SERVICE TO EXECUTE AS #####
+ExecStart=##### /path/to/the/script/utorrent-service #####
+Nice=19
+
+[Install]
+WantedBy=multi-user.target
